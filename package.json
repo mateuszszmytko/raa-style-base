@@ -1,10 +1,12 @@
 {
-  "name": "@raa/base-style",
+  "name": "@raa/style-base",
   "version": "1.0.0",
   "description": "Raa Style Base is a modular Sass framework, fully based on  mixins and functions.",
   "main": "style-base.scss",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node-sass grid.scss grid.css",
+    "playground": "node-sass playground/playground.scss playground/playground.css "
   },
   "keywords": [
     "sass",
@@ -12,5 +14,8 @@
     "framework"
   ],
   "author": "Raa",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.11.0"
+  }
 }

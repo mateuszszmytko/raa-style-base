@@ -1,0 +1,25 @@
+@import '../style-base';
+
+// call initial mixin
+@include raa-style-base(( xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, ));
+
+// define your colors
+@include define-colors(( 'primary': #eb8a23, 'text': #111, 'background': #fff, ));
+
+//define your fonts
+@include define-fonts(('default': 'Open Sans', 'heading': 'Roboto', ));
+@include define-font-sizes(( 'title': (xs: 24px, lg: 28px, xl: 32px), 'default': 1rem, 'small': .75rem, 'tiny': 9px 11px ));
+
+//create container and grid
+@include create-container('container', ( sm: 540px, md: 720px, lg: 960px, xl: 1170px ), 30px);
+@include create-grid('grid', 12, 30px);
+
+
+body {
+    @include font('default', 'default');
+    color: color('primary');
+}
+
+h1 {
+    @include font('title', 'heading');
+}

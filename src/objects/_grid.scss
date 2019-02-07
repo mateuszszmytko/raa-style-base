@@ -1,4 +1,4 @@
-@include create-grid($class-name: 'grid', $columns-count: 12, $gutter: 30px) {
+@mixin create-grid($class-name: 'grid', $columns-count: 12, $gutter: 30px) {
     .#{$class-name} {
         display: flex;
         flex-wrap: wrap;

@@ -1,6 +1,4 @@
-@function define-breakpoints($new-breakpoints) {
-    $breakpoints: $new-breakpoints !global;
-}
+
 
 @mixin media($name) {
     $width: map-get($breakpoints, $name);

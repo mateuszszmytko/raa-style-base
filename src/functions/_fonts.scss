@@ -25,12 +25,18 @@
     @return $font-var;
 }
 
-@mixin font($size: 'default', $family) {
+@mixin font($size: 'default', $family: null) {
     @if $family {
-        font-family: $family;
+        $family-var: map-get($fonts, $family);
+
+        @if not $family-var {
+            @error 'undefined size name: ' + $id;
+        }
+
+        font-family: $family-var;
     }
 
-    $size-var: map-get($font-sizes, $id);
+    $size-var: map-get($font-sizes, $size);
 
     @if not $size-var {
         @error 'undefined size name: ' + $id;
