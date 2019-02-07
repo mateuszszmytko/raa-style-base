@@ -56,7 +56,7 @@ Grid module contains only one mixin and create responsive grid based on flex.
 </div>
 ```
 Column classes will be based on your breakpoints map.
-You can check more examples [here](https://google.com).
+You can check more examples [here](https://stackblitz.com/edit/raa-base-style-examples?file=base-style.scss).
 
 ---
 ### 2. Container
