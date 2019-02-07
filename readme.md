@@ -1,5 +1,5 @@
 # Raa Style Base
-Raa Style Base is a modular [Sass](http://sass-lang.com/) framework, fully based on  mixins and functions. Each module (set of mixins and functions) is independent and doesn't require to use other modules to work. When no modules are used, framework will output no code.
+Raa Style Base is a modular [Sass](http://sass-lang.com/) framework, fully based on  mixins and functions. Each module (set of mixins and functions) is independent and doesn't require the use of other modules to work. When no modules are used, framework will output no code.
 
 Raa Style Base helps you to easily create custom grid, container, manage breakpoints, responsive fonts and colors.
 
@@ -12,7 +12,7 @@ Raa Style Base helps you to easily create custom grid, container, manage breakpo
 ## Basic usage
 To use Raa Style Base, you need to import package in your main `.scss` file, e.g. `main.scss` or `style.scss` and call initial mixin.
 ```scss
-@import '@raa/base-style';
+@import '@raa/style-base';
 
 @include raa-style-base((
     xs: 0,       
@@ -29,7 +29,7 @@ To use Raa Style Base, you need to import package in your main `.scss` file, e.g
 }
 
 ```
-In Raa Style Base initial mixin, you can define breakpoints map. Every module will be based on it. You need to name each breakpoint and set value to it, e.g. breakpoint name `md` will be `768px`. You can use `em` as well.
+In Raa Style Base initial mixin, you can define breakpoints map. Every module will be based on it. You need to name each breakpoint and set its value, e.g. breakpoint name `md` will be `768px`. You can use `em` as well.
 
 But it will output no code anyway, you need to use one of module listed below.
 
@@ -122,7 +122,7 @@ Colors module helps you manage your site colors, you can define your colors and 
 #### Define
 In your main `.scss` file
 ```scss
-@import '@raa/base-style';
+@import '@raa/style-base';
 
 @include define-colors((
     'primary': #eb8a23,
@@ -165,7 +165,7 @@ Fonts module helps you to manage your fonts. There are 2 maps to define, for fon
 #### Define
 In your main `.scss` file
 ```scss
-@import '@raa/base-style';
+@import '@raa/style-base';
 
 @include define-fonts((
     'default': 'Open Sans',
@@ -218,7 +218,7 @@ h2 {
 
 ## Example usage
 ```scss
-@import '@raa/base-style';
+@import '@raa/style-base';
 
 // call initial mixin
 @include raa-style-base((
