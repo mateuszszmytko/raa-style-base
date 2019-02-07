@@ -1,0 +1,18 @@
+@mixin define-colors($new-colors) {
+    $colors: $new-colors !global;
+}
+
+@mixin add-color($map, $key, $value) {
+    $new-color: ($key: $value);
+    $colors: map-merge($colors, $new) !global;
+}
+
+@function color($id) {
+    $color-var: map-get($colors, $id);
+    @if not $color-var {
+        @error'undefined color name: ' + $id;
+    }
+
+    @return $color-var;
+}
+

@@ -1,0 +1,64 @@
+@include create-grid($class-name: 'grid', $columns-count: 12, $gutter: 30px) {
+    .#{$class-name} {
+        display: flex;
+        flex-wrap: wrap;
+
+        margin-right: $gutter / -2;
+        margin-left: $gutter / -2;
+
+        box-sizing: border-box;
+
+        &--no-gutters {
+            margin-right: 0;
+            margin-left: 0;
+
+            & > .#{$class-name}__item {
+                padding-right: 0;
+                padding-left: 0;
+            }
+        }
+    }
+
+    .#{$class-name}__item {
+        width: 100%;
+        min-height: 1px;
+        padding-right: ($gutter / 2);
+        padding-left: ($gutter / 2);
+
+        box-sizing: border-box;
+    }
+    @each $b, $b-width in $breakpoints {
+        $_b: if(map-get($breakpoints, $b) == 0, '', '-#{$b}');
+        @media (min-width: $b-width) {
+            .#{$class-name}-#{$_b}-align-start { align-items: flex-start; }
+            .#{$class-name}-#{$_b}-align-center { align-items: center; }
+            .#{$class-name}-#{$_b}-align-end { align-items: flex-end;}
+
+            .#{$class-name}-#{$_b}-justify-start { justify-content: flex-start; }
+            .#{$class-name}-#{$_b}-justify-end { justify-content: flex-end; }
+            .#{$class-name}-#{$_b}-justify-center { justify-content: center; }
+            .#{$class-name}-#{$_b}-justify-around { justify-content: space-around; }
+            .#{$class-name}-#{$_b}-justify-between { justify-content: space-between; }
+
+            .#{$b} {
+                flex-basis: 0;
+                flex-grow: 1;
+                max-width: 100%;
+            }
+            @for $i from 1 through $columns-count {
+                .#{$b}-#{$i} {
+                    flex: 0 0 percentage($i/$columns-count);
+                    max-width: percentage($i/$columns-count);
+                }
+
+                .order-#{$b}-#{$i} { order: $i; }
+            }
+            @for $i from 1 through ($columns-count - 1) {
+                .offset-#{$b}-#{$i} {
+                    margin-left: percentage($i/$columns-count);
+                }
+            }
+        }
+    }
+
+}

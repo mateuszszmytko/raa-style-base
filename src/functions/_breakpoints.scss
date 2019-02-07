@@ -1,0 +1,25 @@
+@function define-breakpoints($new-breakpoints) {
+    $breakpoints: $new-breakpoints !global;
+}
+
+@mixin media($name) {
+    $width: map-get($breakpoints, $name);
+    @if $width {
+        @media (min-width: $width) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+@mixin media-max($name) {
+    $width: map-get($breakpoints, $name);
+    @if $width {
+        @media (max-width: $width - 1) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}

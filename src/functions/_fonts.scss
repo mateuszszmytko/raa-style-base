@@ -1,0 +1,70 @@
+@mixin define-fonts($new-fonts) {
+    $fonts: $new-fonts !global;
+}
+
+@mixin define-font-sizes($new-font-sizes) {
+    $font-sizes: $new-font-sizes !global;
+}
+
+@mixin add-font($key, $value) {
+    $new-font: ($key: $value);
+    $fonts: map-merge($fonts, $new) !global;
+}
+
+@mixin add-font-size($key, $value) {
+    $new-font-size: ($key: $value);
+    $font-sizes: map-merge($font-sizes, $new) !global;
+}
+
+@function font-family($id) {
+    $font-var: map-get($fonts, $id);
+    @if not $font-var {
+        @error'undefined font name: ' + $id;
+    }
+
+    @return $font-var;
+}
+
+@mixin font($size: 'default', $family) {
+    @if $family {
+        font-family: $family;
+    }
+
+    $size-var: map-get($font-sizes, $id);
+
+    @if not $size-var {
+        @error 'undefined size name: ' + $id;
+    }
+
+    @if type-of($size-var) == 'map' {
+        @each $_b, $size in $size-var {
+            $b-width: map-get($breakpoints, $_b);
+
+            @if $b-width == 0 {
+                font-size: $size;
+            } @else {
+                @media (min-width: $b-width) {
+                    font-size: $size;
+                }
+            }
+        }
+    }
+    @else if type-of($size-var) == 'list' {
+        @each $_b, $b-width in $breakpoints {
+            $i: index(map-keys($breakpoints), $_b);
+
+            @if length($size-var) >= $i {
+                @if $b-width == 0 {
+                    font-size: nth($size-var, $i);
+                } @else {
+                    @media (min-width: $b-width) {
+                        font-size: nth($size-var, $i);
+                    }
+                }
+            }
+        }
+    } @else {
+        font-size: $size-var;
+    }
+}
+
