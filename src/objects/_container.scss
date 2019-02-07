@@ -11,7 +11,7 @@
     
     @each $b, $b-width in $container-max-widths {
         @include media($b) {
-            .o-container {
+            .#{$class-name} {
                 max-width: $b-width;
             }
         }
