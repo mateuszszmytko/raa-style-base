@@ -77,7 +77,6 @@ This mixin will create responsive container, based on breakpoints map. E.g. when
 ```scss
 .button {
     display: inline-block;
-
     padding: 5px 15px;
 
     &--wide {

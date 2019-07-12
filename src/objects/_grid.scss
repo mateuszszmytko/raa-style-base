@@ -40,13 +40,14 @@
             .#{$class-name}-#{$_b}-justify-around { justify-content: space-around; }
             .#{$class-name}-#{$_b}-justify-between { justify-content: space-between; }
 
-            .#{$b} {
+            .#{$class-name}__item.#{$b} {
                 flex-basis: 0;
                 flex-grow: 1;
                 max-width: 100%;
             }
+
             @for $i from 1 through $columns-count {
-                .#{$b}-#{$i} {
+                .#{$class-name}__item.#{$b}-#{$i} {
                     flex: 0 0 percentage($i/$columns-count);
                     max-width: percentage($i/$columns-count);
                 }
@@ -54,7 +55,7 @@
                 .order-#{$b}-#{$i} { order: $i; }
             }
             @for $i from 1 through ($columns-count - 1) {
-                .offset-#{$b}-#{$i} {
+                .#{$class-name}__item.offset-#{$b}-#{$i} {
                     margin-left: percentage($i/$columns-count);
                 }
             }
