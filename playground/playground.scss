@@ -1,4 +1,4 @@
-@import '../style-base';
+@import '../index';
 
 // call initial mixin
 @include raa-style-base(( xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, ));
